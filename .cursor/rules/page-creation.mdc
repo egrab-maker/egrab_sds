@@ -1,0 +1,46 @@
+---
+description: Guide for creating new pages from Figma designs. Activated when working in src/pages/.
+globs: src/pages/**/*.tsx
+alwaysApply: false
+---
+
+# Creating Pages from Figma Designs
+
+This project uses file-based routing. To add a new page, create a single file in `src/pages/`. No router config changes needed.
+
+## Convention
+
+| File                        | Route            |
+|-----------------------------|------------------|
+| `src/pages/index.tsx`       | `/`              |
+| `src/pages/hello_world.tsx` | `/hello_world`   |
+| `src/pages/pricing.tsx`     | `/pricing`       |
+
+## Page Template
+
+Every page file must `export default` a React component:
+
+```tsx
+import { Section } from "layout";
+
+export default function MyPage() {
+  return (
+    <Section padding="1600">
+      {/* Page content here */}
+    </Section>
+  );
+}
+```
+
+## Key Rules
+
+1. **One file = one route.** The filename becomes the URL path segment.
+2. **Always `export default`.** The router relies on default exports.
+3. **Don't touch routing files.** Never edit `src/router.tsx`, `src/main.tsx`, or `src/layouts/RootLayout.tsx` — the route is auto-discovered.
+4. **Header & Footer are already rendered** by the root layout. Don't import or render them in pages.
+5. **`AllProviders` is already rendered** by the root layout. Don't wrap pages in providers.
+6. **Use `Section` as the top-level wrapper** in every page for consistent spacing.
+7. **Use path aliases** for imports: `"primitives"`, `"layout"`, `"compositions"`, `"icons"`, `"hooks"`, `"data"`, `"images"`.
+8. **Use existing SDS components only** — see `src/ui/primitives/`, `src/ui/compositions/`, and `src/ui/layout/`.
+9. **Use CSS variables** from `src/theme.css` — never hardcode colors or spacing.
+10. **Filename convention:** use `snake_case` for multi-word routes (e.g., `product_details.tsx` → `/product_details`).

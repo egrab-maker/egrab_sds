@@ -135,6 +135,9 @@ src/
 │   ├── images/         # Image assets
 │   └── utils/          # Utility functions and components
 ├── stories/            # Storybook stories for all components
+├── pages/              # File-based routes (each .tsx → a route, see page-creation rule)
+├── layouts/            # Route layouts (RootLayout wraps all pages with Header/Footer/AllProviders)
+├── router.tsx          # Auto-discovery router (do not edit)
 ├── examples/           # Examples of how to use components together in larger complete sections
 ├── figma/              # Figma [Code Connect](https://www.figma.com/code-connect-docs/react/) files
 │   ├── primitives/     # Maps Figma components to React primitives
@@ -143,7 +146,7 @@ src/
 ├── theme.css           # CSS custom properties (design tokens)
 ├── reset.css           # CSS reset
 ├── responsive.css      # Responsive utilities
-└── App.tsx             # Demo application
+└── App.tsx             # Application entry point
 ```
 
 ### Scripts Directory
